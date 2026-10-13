@@ -10,8 +10,9 @@ def hello():
 @app.route("/about")
 def about():
   return "about page"
+  
 @app.route("/contact")
-def about():
+def cotact():
   return "contact page"
 
 if __name__ == "__main__":
