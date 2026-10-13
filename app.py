@@ -1,19 +1,22 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def hello():
-  return render_template("templates/index.html")
-  
+    return render_template("index.html")
+
+
 @app.route("/about")
 def about():
-  return "about page"
-  
+    return "about page"
+
+
 @app.route("/contact")
-def cotact():
-  return "contact page"
+def contact():  # Fixed typo from 'cotact'
+    return "contact page"
+
 
 if __name__ == "__main__":
-  app.run(debug=True)
+    app.run(debug=True)
