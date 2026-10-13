@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-  return 'Hello, World! Go to LNSEL<br><br><a href="/about">About Us</a>&nbsp;<a href="/contact">Contact Us</a>'
+  return render_template("index.html")
   
 @app.route("/about")
 def about():
