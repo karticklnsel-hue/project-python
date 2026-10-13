@@ -1,12 +1,7 @@
-from flask import Flask
+def greet_1():
+    return "welcome to Python!"
 
-app = Flask(__name__)
+def greet():
+    print(f"Hello, {greet_1()}")
 
-
-@app.route("/landing")
-def hello():
-  return "Landing Page"
-
-
-if __name__ == "__main__":
-  app.run(debug=True)
+greet()
