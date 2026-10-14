@@ -7,11 +7,11 @@ from flask_sqlalchemy import SQLAlchemy
 # ============================================================
 # CHANGE ONLY THESE VALUES (copy from Railway > MySQL > Variables)
 # ============================================================
-DB_USER = "root"                      # MYSQLUSER
-DB_PASSWORD = "ydczxNWdpzgdsDyvzzNrTfZIbopyDPZU"    # MYSQLPASSWORD
-DB_HOST = "monorail.proxy.rlwy.net"           # public host, e.g. xxxx.proxy.rlwy.net
-DB_PORT = "52617"                     # public port from Railway (NOT always 3306)
-DB_NAME = "railway"                   # MYSQLDATABASE
+DB_USER = "demodevsol_python"      # database USER you create in Webuzo
+DB_PASSWORD = "&njOsQ7!x!"    # that user's password
+DB_HOST = "demo.devsolutionsfinder.com"   # your server domain or server IP (not localhost)
+DB_PORT = "3306"
+DB_NAME = "demodevsol_python"         # database name from phpMyAdmin
 # ============================================================
 
 # On Render you can instead set an environment variable DATABASE_URL
@@ -35,7 +35,6 @@ class User(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String(100))
-    password = db.Column(db.String(255))
     created_at = db.Column(db.DateTime)
 
 
