@@ -7,11 +7,11 @@ from flask_sqlalchemy import SQLAlchemy
 # ============================================================
 # CHANGE ONLY THESE VALUES (copy from Railway > MySQL > Variables)
 # ============================================================
-DB_USER = "root"
-DB_PASSWORD = "ydczxNWdpzgdsDyvzzNrTfZIbopyDPZU"
-DB_HOST = "mysql.railway.internal"
-DB_PORT = "3306"
-DB_NAME = "railway"
+DB_USER = "root"                      # MYSQLUSER
+DB_PASSWORD = "your-password-here"    # MYSQLPASSWORD
+DB_HOST = "your-host-here"            # public host, e.g. xxxx.proxy.rlwy.net
+DB_PORT = "3306"                      # public port from Railway (NOT always 3306)
+DB_NAME = "railway"                   # MYSQLDATABASE
 # ============================================================
 
 # On Render you can instead set an environment variable DATABASE_URL
@@ -30,8 +30,13 @@ db = SQLAlchemy(app)
 
 
 class User(db.Model):
+    # Matches the existing "users" table in your Railway MySQL
+    __tablename__ = "users"
+
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
+    user_name = db.Column(db.String(100))
+    password = db.Column(db.String(255))
+    created_at = db.Column(db.DateTime)
 
 
 # Create tables if they don't exist (won't crash the app if DB is unreachable)
@@ -44,7 +49,13 @@ with app.app_context():
 
 @app.route("/")
 def hello():
-    return render_template("index.html")
+    try:
+        all_users = User.query.order_by(User.id).all()
+        error = None
+    except Exception as e:
+        all_users = []
+        error = str(e)
+    return render_template("index.html", users=all_users, error=error)
 
 
 @app.route("/about")
@@ -67,18 +78,15 @@ def dbtest():
         return f"Database error: {e}", 500
 
 
-# Add a user: open /add/John
-@app.route("/add/<name>")
-def add_user(name):
-    db.session.add(User(name=name))
-    db.session.commit()
-    return f"Added {name}"
-
-
-# List users: open /users
+# JSON list of users (password is intentionally NOT included)
 @app.route("/users")
 def users():
-    return {"users": [u.name for u in User.query.all()]}
+    return {
+        "users": [
+            {"id": u.id, "user_name": u.user_name, "created_at": str(u.created_at)}
+            for u in User.query.order_by(User.id).all()
+        ]
+    }
 
 
 if __name__ == "__main__":
