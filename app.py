@@ -9,8 +9,8 @@ from flask_sqlalchemy import SQLAlchemy
 # ============================================================
 DB_USER = "root"                      # MYSQLUSER
 DB_PASSWORD = "ydczxNWdpzgdsDyvzzNrTfZIbopyDPZU"    # MYSQLPASSWORD
-DB_HOST = "mysql.railway.internal"            # public host, e.g. xxxx.proxy.rlwy.net
-DB_PORT = "3306"                      # public port from Railway (NOT always 3306)
+DB_HOST = "monorail.proxy.rlwy.net"           # public host, e.g. xxxx.proxy.rlwy.net
+DB_PORT = "52617"                     # public port from Railway (NOT always 3306)
 DB_NAME = "railway"                   # MYSQLDATABASE
 # ============================================================
 
