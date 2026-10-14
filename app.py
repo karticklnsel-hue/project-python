@@ -7,11 +7,11 @@ from flask_sqlalchemy import SQLAlchemy
 # ============================================================
 # CHANGE ONLY THESE VALUES (copy from Railway > MySQL > Variables)
 # ============================================================
-DB_USER = "root"                      # MYSQLUSER
-DB_PASSWORD = "your-password-here"    # MYSQLPASSWORD
-DB_HOST = "your-host-here"            # public host, e.g. xxxx.proxy.rlwy.net
-DB_PORT = "3306"                      # public port from Railway (NOT always 3306)
-DB_NAME = "railway"                   # MYSQLDATABASE
+DB_USER = "root"
+DB_PASSWORD = "ydczxNWdpzgdsDyvzzNrTfZIbopyDPZU"
+DB_HOST = "mysql.railway.internal"
+DB_PORT = "3306"
+DB_NAME = "railway"
 # ============================================================
 
 # On Render you can instead set an environment variable DATABASE_URL
