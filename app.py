@@ -9,7 +9,7 @@ from flask_sqlalchemy import SQLAlchemy
 # ============================================================
 DB_USER = "demodevsol_python"      # database USER you create in Webuzo
 DB_PASSWORD = "&njOsQ7!x!"    # that user's password
-DB_HOST = "demo.devsolutionsfinder.com"   # your server domain or server IP (not localhost)
+DB_HOST = "23.226.124.182"   # your server domain or server IP (not localhost)
 DB_PORT = "3306"
 DB_NAME = "demodevsol_python"         # database name from phpMyAdmin
 # ============================================================
